@@ -33,9 +33,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ═══════════════════════════════════════
-   HEART WATERMARK BACKGROUND
-═══════════════════════════════════════ */
 .hearts-bg {
   position: fixed;
   inset: 0;
@@ -50,9 +47,6 @@ body {
   opacity: 0.028;
 }
 
-/* ═══════════════════════════════════════
-   NAV
-═══════════════════════════════════════ */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 200;
@@ -70,7 +64,6 @@ nav {
   text-decoration: none;
 }
 
-/* Logo image - will show GitHub logo once uploaded */
 .nav-logo-img {
   height: 48px;
   width: auto;
@@ -81,7 +74,6 @@ nav {
   display: flex; align-items: center;
 }
 
-/* Visible dashed placeholder box shown until logo is uploaded */
 .logo-placeholder-box {
   display: flex; align-items: center;
   gap: 4px;
@@ -107,22 +99,6 @@ nav {
   opacity: 0.7;
   white-space: nowrap;
 }
-
-/* Fallback text logo shown until image is available */
-.nav-logo-fallback {
-  display: flex; align-items: center; gap: 10px;
-}
-
-.nav-logo-mark {
-  width: 42px; height: 42px;
-  background: var(--crimson);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 12px rgba(163,22,33,0.35);
-}
-
-.nav-logo-mark svg { width: 20px; height: 20px; fill: white; }
 
 .nav-logo-text {
   font-family: 'Cormorant Garamond', serif;
@@ -209,9 +185,6 @@ nav {
   background: var(--text); transition: all 0.3s;
 }
 
-/* ═══════════════════════════════════════
-   HERO
-═══════════════════════════════════════ */
 .hero {
   padding-top: 72px;
   min-height: 100vh;
@@ -231,7 +204,6 @@ nav {
   pointer-events: none;
 }
 
-/* Decorative gold line accent */
 .hero-accent {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -363,7 +335,6 @@ nav {
   background: var(--blush);
 }
 
-/* Shape selector in hero */
 .hero-shape-selector {
   margin-bottom: 1.8rem;
 }
@@ -431,7 +402,6 @@ nav {
   position: relative; z-index: 2;
 }
 
-/* Hero pillow visual */
 .hero-pillow-wrap {
   position: relative;
   width: 100%; max-width: 500px;
@@ -479,9 +449,6 @@ nav {
 .badge-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; }
 .badge-val { font-size: 0.88rem; font-weight: 600; color: var(--text); }
 
-/* ═══════════════════════════════════════
-   HOW IT WORKS
-═══════════════════════════════════════ */
 .section {
   position: relative; z-index: 1;
   padding: 6rem 8%;
@@ -531,7 +498,6 @@ nav {
   margin: 0 auto;
 }
 
-/* Contact bar */
 .contact-bar {
   background: var(--blush-mid);
   border-top: 1px solid rgba(163,22,33,0.1);
@@ -574,8 +540,9 @@ nav {
 .contact-bar-item.whatsapp:hover { background: rgba(37,211,102,0.05); }
 .contact-bar-item.instagram { color: #E1306C; border-color: rgba(225,48,108,0.3); }
 .contact-bar-item.instagram:hover { background: rgba(225,48,108,0.05); }
+.contact-bar-item.facebook { color: #1877F2; border-color: rgba(24,119,242,0.3); }
+.contact-bar-item.facebook:hover { background: rgba(24,119,242,0.05); }
 
-/* How steps */
 .how { background: var(--white); }
 
 .steps-grid {
@@ -644,9 +611,6 @@ nav {
   line-height: 1.65;
 }
 
-/* ═══════════════════════════════════════
-   PRODUCTS
-═══════════════════════════════════════ */
 .products { background: var(--blush); }
 
 .products-grid {
@@ -678,6 +642,12 @@ nav {
   overflow: hidden;
 }
 
+.product-img-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .product-shape-label {
   position: absolute;
   top: 12px; right: 12px;
@@ -689,6 +659,7 @@ nav {
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 2px;
+  z-index: 2;
 }
 
 .product-body {
@@ -742,9 +713,6 @@ nav {
 
 .btn-sm:hover { background: var(--crimson-deep); }
 
-/* ═══════════════════════════════════════
-   WHY US
-═══════════════════════════════════════ */
 .why { background: var(--white); }
 
 .why-grid {
@@ -800,9 +768,6 @@ nav {
   line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════
-   REVIEWS
-═══════════════════════════════════════ */
 .reviews {
   background: var(--crimson);
   position: relative;
@@ -875,9 +840,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* ═══════════════════════════════════════
-   FAQ
-═══════════════════════════════════════ */
 .faq { background: var(--cream); }
 
 .faq-inner {
@@ -933,9 +895,6 @@ nav {
 
 .faq-item.open .faq-a { display: block; }
 
-/* ═══════════════════════════════════════
-   ORDER FORM
-═══════════════════════════════════════ */
 .order { background: var(--white); }
 
 .form-wrap {
@@ -1062,7 +1021,6 @@ nav {
   cursor: pointer;
 }
 
-/* Color palette */
 .color-palette {
   display: flex; gap: 10px; flex-wrap: wrap;
   margin-top: 6px;
@@ -1133,7 +1091,6 @@ nav {
   line-height: 1.5;
 }
 
-/* Success state */
 .form-success {
   display: none;
   padding: 3.5rem 2.5rem;
@@ -1163,9 +1120,6 @@ nav {
   line-height: 1.75;
 }
 
-/* ═══════════════════════════════════════
-   CTA BANNER
-═══════════════════════════════════════ */
 .cta-banner {
   background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 60%, var(--rose) 100%);
   padding: 5rem 8%;
@@ -1217,9 +1171,6 @@ nav {
   position: relative;
 }
 
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
 footer {
   background: #120505;
   padding: 4rem 8% 2rem;
@@ -1315,9 +1266,6 @@ footer {
 
 .btn-follow:hover { opacity: 0.9; transform: translateY(-1px); }
 
-/* ═══════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════ */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1326,9 +1274,6 @@ footer {
 
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ═══════════════════════════════════════
-   MOBILE MENU
-═══════════════════════════════════════ */
 .mobile-nav {
   display: none;
   position: fixed; top: 72px; left: 0; right: 0;
@@ -1359,9 +1304,6 @@ footer {
   color: var(--crimson) !important;
 }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════ */
 @media (max-width: 1024px) {
   .why-grid { grid-template-columns: repeat(3, 1fr); }
 }
@@ -1392,16 +1334,12 @@ footer {
 </head>
 <body>
 
-<!-- HEART WATERMARK BG -->
 <div class="hearts-bg" aria-hidden="true">
   <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern id="hearts" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-        <!-- Large heart -->
         <path d="M60 45 C60 45 46 36 40 42 C33 49 40 58 60 68 C80 58 87 49 80 42 C74 36 60 45 60 45Z" fill="#A31621"/>
-        <!-- Small heart offset -->
         <path d="M20 90 C20 90 14 86 11 89 C8 92 11 97 20 101 C29 97 32 92 29 89 C26 86 20 90 20 90Z" fill="#A31621"/>
-        <!-- Tiny heart -->
         <path d="M100 15 C100 15 96 12 94 14 C92 17 94 20 100 23 C106 20 108 17 106 14 C104 12 100 15 100 15Z" fill="#A31621"/>
       </pattern>
     </defs>
@@ -1412,20 +1350,7 @@ footer {
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <!--
-      LOGO PLACEHOLDER:
-      Replace the fallback below with:
-    -->
-    <!--
-      ╔══════════════════════════════════════════╗
-      ║  LOGO PLACEHOLDER                        ║
-      ║  Kada dobiješ GitHub URL slike, zameni:  ║
-      ║  src="YOUR_GITHUB_LOGO_URL_HERE"         ║
-      ║  Slika će automatski zameniti placeholder ║
-      ╚══════════════════════════════════════════╝
-    -->
     <div class="nav-logo-area">
-      <!-- LOGO IMAGE: swap src with your GitHub raw URL -->
       <img
         id="site-logo"
         src="YOUR_GITHUB_LOGO_URL_HERE"
@@ -1433,7 +1358,6 @@ footer {
         style="height:48px; width:auto; object-fit:contain; display:none;"
         onload="this.style.display='block'; document.getElementById('logo-placeholder').style.display='none';"
       >
-      <!-- VISIBLE PLACEHOLDER shown until real logo is uploaded -->
       <div id="logo-placeholder" class="logo-placeholder-box">
         <div class="logo-placeholder-inner">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A31621" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9l4-4 4 4 4-5 4 5"/><circle cx="8.5" cy="13.5" r="1.5"/></svg>
@@ -1453,14 +1377,18 @@ footer {
     <li><a href="#recenzije">Recenzije</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
+
   <div class="nav-social">
     <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" rel="noopener" class="nav-social-btn" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="viber://chat?number=381641768447" class="nav-social-btn" aria-label="Viber">
+    <a href="https://www.facebook.com/profile.php?id=61587498056983" target="_blank" rel="noopener" class="nav-social-btn" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="viber://chat?number=381643638509" class="nav-social-btn" aria-label="Viber">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C5.5 0 1 4.3 1 9.6c0 2.8 1.3 5.4 3.5 7.2v3.7l3.4-1.9c1.1.3 2.3.5 3.5.5 5.9 0 10.4-4.3 10.4-9.6S17.3 0 11.4 0zm1 13.1l-2.5-2.7-4.9 2.7 5.4-5.8 2.6 2.7 4.8-2.7-5.4 5.8z"/></svg>
     </a>
-    <a href="https://wa.me/381641768447" target="_blank" rel="noopener" class="nav-social-btn" aria-label="WhatsApp">
+    <a href="https://wa.me/381643638509" target="_blank" rel="noopener" class="nav-social-btn" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
     </a>
   </div>
@@ -1483,8 +1411,9 @@ footer {
   <a href="#naruci" class="nav-cta" onclick="closeMobile()">Naruči odmah</a>
   <div class="mobile-social">
     <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" onclick="closeMobile()">📷 Instagram</a>
-    <a href="viber://chat?number=381641768447" onclick="closeMobile()">💬 Viber</a>
-    <a href="https://wa.me/381641768447" target="_blank" onclick="closeMobile()">💬 WhatsApp</a>
+    <a href="https://www.facebook.com/profile.php?id=61587498056983" target="_blank" onclick="closeMobile()">📘 Facebook</a>
+    <a href="viber://chat?number=381643638509" onclick="closeMobile()">💬 Viber</a>
+    <a href="https://wa.me/381643638509" target="_blank" onclick="closeMobile()">💬 WhatsApp</a>
   </div>
 </div>
 
@@ -1501,27 +1430,26 @@ footer {
     </h1>
 
     <p class="hero-tagline">
-      Jastuci sa tvojom fotografijom, imenom ili porukom —<br>
+      Jastuci sa vašom fotografijom, imenom ili porukom —<br>
       savršen poklon za svaku posebnu priliku.
     </p>
 
-    <!-- SHAPE SELECTOR - visible immediately in hero -->
     <div class="hero-shape-selector">
-      <div class="shape-label-text">Izaberi oblik jastuka:</div>
+      <div class="shape-label-text">Izaberite oblik jastuka:</div>
       <div class="shape-btns">
         <button class="shape-btn active" data-shape="kvadratni" onclick="selectShape(this)">
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <rect x="4" y="4" width="32" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
           </svg>
           <span>Kvadratni</span>
-          <small>35×35 cm</small>
+          <small>42×42 cm</small>
         </button>
         <button class="shape-btn" data-shape="srcoliki" onclick="selectShape(this)">
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 32 C20 32 5 22 5 13 C5 7 10 4 15 6 C17 7 19 9 20 11 C21 9 23 7 25 6 C30 4 35 7 35 13 C35 22 20 32 20 32Z" fill="none" stroke="currentColor" stroke-width="2"/>
           </svg>
           <span>Srcoliki</span>
-          <small>Oblik srca</small>
+          <small>42×42 cm</small>
         </button>
       </div>
     </div>
@@ -1529,24 +1457,23 @@ footer {
     <div class="hero-divider"></div>
 
     <ul class="hero-checkmarks">
-      <li>Personalizacija po tvojoj želji</li>
+      <li>Personalizacija po vašoj želji</li>
       <li>Brza izrada 1–2 dana</li>
-      <li>Plaćanje pouzećem — platiš tek kad prime paket</li>
+      <li>Plaćanje pouzećem — platite tek kada primite paket</li>
       <li>Dostava na celu teritoriju Srbije</li>
     </ul>
 
     <div class="hero-buttons">
       <a href="#naruci" class="btn-primary">
-        Naruči odmah
+        Naručite odmah
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#proizvodi" class="btn-ghost">Pogledaj proizvode</a>
+      <a href="#proizvodi" class="btn-ghost">Pogledajte proizvode</a>
     </div>
   </div>
 
   <div class="hero-right">
     <div class="hero-pillow-wrap">
-      <!-- Square Pillow SVG -->
       <svg class="pillow-visual-main" viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1556,25 +1483,16 @@ footer {
           <filter id="ps1" x="-15%" y="-15%" width="130%" height="130%">
             <feDropShadow dx="0" dy="10" stdDeviation="22" flood-color="#A31621" flood-opacity="0.2"/>
           </filter>
-          <clipPath id="pillowClip">
-            <ellipse cx="230" cy="200" rx="195" ry="168"/>
-          </clipPath>
         </defs>
-        <!-- Pillow shape -->
         <ellipse cx="230" cy="200" rx="195" ry="168" fill="url(#pg1)" filter="url(#ps1)" stroke="#F0D5D3" stroke-width="1"/>
-        <!-- Inner seam -->
         <ellipse cx="230" cy="200" rx="178" ry="152" fill="none" stroke="#EAC8C5" stroke-width="1" stroke-dasharray="6,5"/>
-        <!-- Heart photo frame -->
         <path d="M230 145 C230 145 192 120 175 138 C158 156 175 180 230 205 C285 180 302 156 285 138 C268 120 230 145 230 145Z" fill="#A31621" opacity="0.12"/>
         <path d="M230 142 C230 142 194 118 176 137 C159 157 177 181 230 206 C283 181 301 157 284 137 C266 118 230 142 230 142Z" fill="none" stroke="#A31621" stroke-width="1.5" opacity="0.35"/>
-        <!-- Name -->
         <text x="230" y="252" font-family="Georgia, serif" font-size="30" font-style="italic" font-weight="700" fill="#A31621" text-anchor="middle" opacity="0.9">Maša</text>
-        <!-- Small hearts -->
         <path d="M130 140 C130 140 124 136 121 139 C118 142 121 147 130 151 C139 147 142 142 139 139 C136 136 130 140 130 140Z" fill="#A31621" opacity="0.22"/>
         <path d="M332 140 C332 140 326 136 323 139 C320 142 323 147 332 151 C341 147 344 142 341 139 C338 136 332 140 332 140Z" fill="#A31621" opacity="0.22"/>
         <path d="M160 90 C160 90 155 87 153 89 C151 91 153 95 160 97 C167 95 169 91 167 89 C165 87 160 90 160 90Z" fill="#A31621" opacity="0.15"/>
         <path d="M300 90 C300 90 295 87 293 89 C291 91 293 95 300 97 C307 95 309 91 307 89 C305 87 300 90 300 90Z" fill="#A31621" opacity="0.15"/>
-        <!-- Pillow corner puffs -->
         <ellipse cx="68" cy="110" rx="28" ry="20" fill="white" opacity="0.6"/>
         <ellipse cx="392" cy="110" rx="28" ry="20" fill="white" opacity="0.6"/>
         <ellipse cx="68" cy="290" rx="28" ry="20" fill="white" opacity="0.6"/>
@@ -1600,24 +1518,28 @@ footer {
   </div>
 </section>
 
-<!-- SOCIAL CONTACT BAR -->
+<!-- CONTACT BAR -->
 <div class="contact-bar">
   <div class="contact-bar-inner">
-    <span class="contact-bar-label">Kontaktiraj nas direktno:</span>
-    <a href="tel:+381641768447" class="contact-bar-item">
-      📞 +381 64 176 8447
+    <span class="contact-bar-label">Kontaktirajte nas direktno:</span>
+    <a href="tel:+381643638509" class="contact-bar-item">
+      📞 +381 64 363 8509
     </a>
-    <a href="viber://chat?number=381641768447" class="contact-bar-item viber">
+    <a href="viber://chat?number=381643638509" class="contact-bar-item viber">
       <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M11.4 0C5.5 0 1 4.3 1 9.6c0 2.8 1.3 5.4 3.5 7.2v3.7l3.4-1.9c1.1.3 2.3.5 3.5.5 5.9 0 10.4-4.3 10.4-9.6S17.3 0 11.4 0z"/></svg>
       Viber
     </a>
-    <a href="https://wa.me/381641768447" target="_blank" class="contact-bar-item whatsapp">
+    <a href="https://wa.me/381643638509" target="_blank" class="contact-bar-item whatsapp">
       <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
       WhatsApp
     </a>
     <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" class="contact-bar-item instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       Instagram
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61587498056983" target="_blank" class="contact-bar-item facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
     </a>
   </div>
 </div>
@@ -1628,7 +1550,7 @@ footer {
     <div class="section-header reveal">
       <div class="eyebrow">Kako naručiti?</div>
       <h2 class="section-title">Tri jednostavna koraka</h2>
-      <p class="section-sub">Naruči personalizovani jastuk za samo par minuta — mi se brinemo o svemu ostalom.</p>
+      <p class="section-sub">Naručite personalizovani jastuk za samo par minuta — mi se brinemo o svemu ostalom.</p>
     </div>
 
     <div class="steps-grid reveal">
@@ -1638,8 +1560,8 @@ footer {
         <div class="step-num">
           <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
         </div>
-        <h3>Popuni formu</h3>
-        <p>Unesi kontakt podatke i detalje — fotografiju, tekst, stil fonta i sve što želiš na jastuku.</p>
+        <h3>Popunite formu</h3>
+        <p>Unesite kontakt podatke i detalje — fotografiju, tekst, stil fonta i sve što želite na jastuku.</p>
       </div>
 
       <div class="step">
@@ -1647,15 +1569,15 @@ footer {
           <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h3>Mi dizajniramo</h3>
-        <p>Naš tim kreira dizajn i šalje ti ga na uvid pre izrade. Sve usklađujemo prema tvojim željama.</p>
+        <p>Naš tim kreira dizajn i šalje vam ga na uvid pre izrade. Sve usklađujemo prema vašim željama.</p>
       </div>
 
       <div class="step">
         <div class="step-num">
           <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         </div>
-        <h3>Dobijaš na adresu</h3>
-        <p>Brzom poštom šaljemo paket direktno do tebe. Platiš pouzećem — tek kada prime paket.</p>
+        <h3>Dobijate na adresu</h3>
+        <p>Brzom poštom šaljemo paket direktno do vas. Platite pouzećem — tek kada primite paket.</p>
       </div>
     </div>
   </div>
@@ -1672,7 +1594,6 @@ footer {
 
     <div class="products-grid reveal">
 
-      <!-- Product 1: Name pillow - square -->
       <div class="product-card">
         <div class="product-img-area">
           <span class="product-shape-label">Kvadratni</span>
@@ -1687,15 +1608,14 @@ footer {
         </div>
         <div class="product-body">
           <div class="product-name">Jastuk sa imenom</div>
-          <div class="product-desc">Personalizovani jastuk sa imenom djeteta ili voljene osobe. Razne boje i stilovi fonta — latinica ili ćirilica.</div>
+          <div class="product-desc">Personalizovani jastuk sa imenom deteta ili voljene osobe. Razne boje i stilovi fonta — latinica ili ćirilica.</div>
           <div class="product-footer">
             <div class="product-price">od 1.500 RSD</div>
-            <a href="#naruci" class="btn-sm">Naruči</a>
+            <a href="#naruci" class="btn-sm">Naručite</a>
           </div>
         </div>
       </div>
 
-      <!-- Product 2: Photo pillow - heart shaped -->
       <div class="product-card">
         <div class="product-img-area">
           <span class="product-shape-label">Srcoliki</span>
@@ -1703,21 +1623,20 @@ footer {
             <path d="M75 125 C75 125 18 80 18 45 C18 22 35 12 52 18 C62 22 70 30 75 38 C80 30 88 22 98 18 C115 12 132 22 132 45 C132 80 75 125 75 125Z" fill="#FDF0EE" stroke="#F0D5D3" stroke-width="1"/>
             <path d="M75 120 C75 120 24 77 24 46 C24 26 39 17 55 23 C64 26 72 33 75 41 C78 33 86 26 95 23 C111 17 126 26 126 46 C126 77 75 120 75 120Z" fill="none" stroke="#EAC8C5" stroke-width="0.8" stroke-dasharray="4,3"/>
             <rect x="52" y="30" width="46" height="46" rx="6" fill="#A31621" opacity="0.12"/>
-            <text x="75" y="53" font-family="Arial" font-size="9" fill="#A31621" text-anchor="middle" opacity="0.7">tvoja slika</text>
+            <text x="75" y="53" font-family="Arial" font-size="9" fill="#A31621" text-anchor="middle" opacity="0.7">vaša slika</text>
             <text x="75" y="90" font-family="Georgia,serif" font-size="11" font-weight="700" font-style="italic" fill="#A31621" text-anchor="middle">Volim te mama!</text>
           </svg>
         </div>
         <div class="product-body">
           <div class="product-name">Srcoliki jastuk sa slikom</div>
-          <div class="product-desc">Tvoja fotografija odštampana na srcolikom jastuku. Mekan, udoban i čvrst. Jastučnica se skida i može da se pere.</div>
+          <div class="product-desc">Vaša fotografija odštampana na srcolikam jastuku. Mekan, udoban i čvrst. Jastučnica se skida i može da se pere.</div>
           <div class="product-footer">
             <div class="product-price">od 1.800 RSD</div>
-            <a href="#naruci" class="btn-sm">Naruči</a>
+            <a href="#naruci" class="btn-sm">Naručite</a>
           </div>
         </div>
       </div>
 
-      <!-- Product 3: Character pillow - square -->
       <div class="product-card">
         <div class="product-img-area">
           <span class="product-shape-label">Kvadratni</span>
@@ -1734,12 +1653,11 @@ footer {
           <div class="product-desc">Omiljeni crtani junaci kombinovani sa imenom deteta. Idealan poklon za decu — oduševljava na prvu.</div>
           <div class="product-footer">
             <div class="product-price">od 1.600 RSD</div>
-            <a href="#naruci" class="btn-sm">Naruči</a>
+            <a href="#naruci" class="btn-sm">Naručite</a>
           </div>
         </div>
       </div>
 
-      <!-- Product 4: Message pillow - heart shaped -->
       <div class="product-card">
         <div class="product-img-area">
           <span class="product-shape-label">Srcoliki</span>
@@ -1756,7 +1674,7 @@ footer {
           <div class="product-desc">Posebna poruka, datum ili citat koji ostaje zauvek. Za rođendan, godišnjicu ili znak pažnje.</div>
           <div class="product-footer">
             <div class="product-price">od 1.400 RSD</div>
-            <a href="#naruci" class="btn-sm">Naruči</a>
+            <a href="#naruci" class="btn-sm">Naručite</a>
           </div>
         </div>
       </div>
@@ -1780,7 +1698,7 @@ footer {
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
         <h3>Unikatni dizajn</h3>
-        <p>Svaki jastuk dizajnira naš tim ručno, prema tvojim željama.</p>
+        <p>Svaki jastuk dizajnira naš tim ručno, prema vašim željama.</p>
       </div>
 
       <div class="why-item">
@@ -1796,7 +1714,7 @@ footer {
           <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
         </div>
         <h3>Plaćanje pouzećem</h3>
-        <p>Platiš tek kada poštar donese paket. Nema avansnih uplata.</p>
+        <p>Platite tek kada poštar donese paket. Nema avansnih uplata.</p>
       </div>
 
       <div class="why-item">
@@ -1839,7 +1757,7 @@ footer {
       <div class="review-card">
         <span class="review-quote-mark">"</span>
         <div class="stars">★★★★★</div>
-        <p class="review-text">Brza izrada i dostava. Jastuk je još lepši uživo! Naručila sam srcoliki jastuk za godišnjicu — partnerka bila presrećna. Apsolutno preporučujem!</p>
+        <p class="review-text">Brza izrada i dostava. Jastuk je još lepši uživo! Naručila sam srcoliki jastuk za godišnjicu — partner bio presrećan. Apsolutno preporučujem!</p>
         <div class="reviewer">— Nikola K., Novi Sad</div>
       </div>
 
@@ -1860,7 +1778,7 @@ footer {
     <div class="section-header reveal">
       <div class="eyebrow">Pitanja i odgovori</div>
       <h2 class="section-title">Često postavljana pitanja</h2>
-      <p class="section-sub">Sve što trebaš znati pre narudžbine.</p>
+      <p class="section-sub">Sve što trebate znati pre narudžbine.</p>
     </div>
     <div class="faq-inner reveal">
 
@@ -1871,37 +1789,37 @@ footer {
 
       <div class="faq-item">
         <div class="faq-q">Da li mogu da pošaljem svoju fotografiju? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Da — kupac šalje svoju fotografiju prilikom poručivanja. Fotografiju možeš priložiti kao link (WeTransfer, Google Drive i sl.) ili je pošalješ direktno na naš broj. Preporučujemo fotografije visoke rezolucije za što bolji kvalitet štampe.</div>
+        <div class="faq-a">Da — kupac šalje svoju fotografiju prilikom poručivanja. Fotografiju možete priložiti kao link (WeTransfer, Google Drive i sl.) ili je pošaljete direktno na naš broj. Preporučujemo fotografije visoke rezolucije za što bolji kvalitet štampe.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">Da li šaljete na kućnu adresu? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Da, šaljemo paket brzom poštom na adresu kupca — cela teritorija Srbije. Troškove dostave možeš proveriti pri narudžbini.</div>
+        <div class="faq-a">Da, šaljemo paket brzom poštom na adresu kupca — cela teritorija Srbije. Troškove dostave možete proveriti pri narudžbini.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">Kako se vrši plaćanje? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Plaćanje se vrši isključivo pouzećem — platiš tek kada poštar donese paket do tvoje adrese. Nema avansnih uplata niti onlajn plaćanja.</div>
+        <div class="faq-a">Plaćanje se vrši isključivo pouzećem — platite tek kada poštar donese paket do vaše adrese. Nema avansnih uplata niti onlajn plaćanja.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">Da li se jastučnica može prati? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Da! Jastučnica se skida i može da se pere u mašini na 30°C. Preporučujemo pranje unutra-naopako kako bi štampa što duže ostala živa i intenzivna.</div>
+        <div class="faq-a">Da! Jastučnica se skida i može da se pere u mašini na 30°C. Preporučujemo pranje naopako kako bi štampa što duže ostala živa i intenzivna.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">Koje su dimenzije i oblici jastuka? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Nudimo kvadratne jastuke dimenzija 35×35 cm i srcolike jastuke. Oba oblika su mekana, udobna i čvrsta — idealna za grljenje ili dekoraciju. Za posebne dimenzije kontaktiraj nas pre narudžbine.</div>
+        <div class="faq-a">Nudimo kvadratne jastuke dimenzija 42×42 cm i srcolike jastuke dimenzija 42×42 cm. Oba oblika su mekana, udobna i čvrsta — idealna za grljenje ili dekoraciju. Za posebne dimenzije kontaktirajte nas pre narudžbine.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">Mogu li da dodam stikere uz narudžbinu? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Da! Možeš dodati paket od 3 stikera sa istim motivom kao na jastuku uz doplatu od 250 RSD. Opcija je dostupna u formi za narudžbinu.</div>
+        <div class="faq-q">Da li mogu da dodam štampu i sa druge strane jastuka? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Da! Možete dodati štampu i sa druge strane jastuka uz doplatu od 350 RSD. Opcija je dostupna u formi za narudžbinu.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">Da li mogu da biram boju i stil fonta? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Naravno! Možeš izabrati boju teksta (crvena, crna, bela, plava, zlatna, ljubičasta, zelena), pismo (latinica ili ćirilica), kao i upisati posebne instrukcije za stil fonta u napomeni.</div>
+        <div class="faq-a">Naravno! Možete izabrati boju teksta (crvena, crna, bela, plava, zlatna, ljubičasta, zelena), pismo (latinica ili ćirilica), kao i upisati posebne instrukcije za stil fonta u napomeni.</div>
       </div>
 
     </div>
@@ -1913,8 +1831,8 @@ footer {
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="eyebrow">Narudžbina</div>
-      <h2 class="section-title">Naruči svoj jastuk</h2>
-      <p class="section-sub">Popuni formu — kontaktiraćemo te u roku od sat vremena sa potvrdom i dizajnom na uvid.</p>
+      <h2 class="section-title">Naručite svoj jastuk</h2>
+      <p class="section-sub">Popunite formu — kontaktiraćemo vas u roku od sat vremena sa potvrdom i dizajnom na uvid.</p>
     </div>
 
     <div class="form-wrap reveal">
@@ -1928,7 +1846,6 @@ footer {
 
       <div class="form-body" id="form-body">
 
-        <!-- Contact -->
         <div class="form-section-label">Kontakt podaci</div>
         <div class="form-row">
           <div class="form-group">
@@ -1946,7 +1863,6 @@ footer {
         </div>
 
         <hr class="form-divider">
-        <!-- Delivery -->
         <div class="form-section-label">Adresa za dostavu</div>
         <div class="form-group">
           <label>Ulica i broj <span class="req">*</span></label>
@@ -1964,21 +1880,20 @@ footer {
         </div>
 
         <hr class="form-divider">
-        <!-- Order details -->
         <div class="form-section-label">Detalji narudžbine</div>
 
         <div class="form-row">
           <div class="form-group">
             <label>Tip jastuka <span class="req">*</span></label>
             <select id="f-type">
-              <option value="">— Izaberi tip —</option>
-              <optgroup label="Kvadratni jastuci">
+              <option value="">— Izaberite tip —</option>
+              <optgroup label="Kvadratni jastuci (42×42 cm)">
                 <option>Kvadratni — sa imenom</option>
                 <option>Kvadratni — sa slikom</option>
                 <option>Kvadratni — sa junakom</option>
                 <option>Kvadratni — sa porukom</option>
               </optgroup>
-              <optgroup label="Srcoliki jastuci">
+              <optgroup label="Srcoliki jastuci (42×42 cm)">
                 <option>Srcoliki — sa imenom</option>
                 <option>Srcoliki — sa slikom</option>
                 <option>Srcoliki — sa porukom</option>
@@ -1991,18 +1906,18 @@ footer {
               <option>1 komad</option>
               <option>2 komada</option>
               <option>3 komada</option>
-              <option>4 ili više (kontaktiramo te)</option>
+              <option>4 ili više (kontaktiraćemo vas)</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
           <label>Tekst koji treba da se nađe na jastuku</label>
-          <textarea id="f-text" placeholder="Upiši ime, poruku, datum, citat ili bilo koji tekst. Slobodno navedi i željeni stil (rukopis, štampana slova, bold, tanko...)"></textarea>
+          <textarea id="f-text" placeholder="Upišite ime, poruku, datum, citat ili bilo koji tekst. Slobodno navedite i željeni stil (rukopis, štampana slova, bold, tanko...)"></textarea>
         </div>
 
         <div class="form-group">
-          <label>Izaberi boju teksta</label>
+          <label>Izaberite boju teksta</label>
           <div class="color-palette" id="color-palette">
             <div class="color-dot active" style="background:#A31621" data-name="Crvena" data-color="Crvena"></div>
             <div class="color-dot" style="background:#1A1A1A" data-name="Crna" data-color="Crna"></div>
@@ -2016,7 +1931,7 @@ footer {
         </div>
 
         <div class="form-group">
-          <label>Izaberi pismo</label>
+          <label>Izaberite pismo</label>
           <div class="radio-group">
             <label class="radio-opt">
               <input type="radio" name="pismo" value="Latinica" checked> Latinica
@@ -2030,7 +1945,7 @@ footer {
         <div class="form-group">
           <label>Link do fotografije (opciono)</label>
           <input type="url" id="f-photo" placeholder="WeTransfer, Google Drive, Dropbox...">
-          <p class="form-note-small">Ako nemaš link — fotografiju pošalji na naš Viber/WhatsApp koji ćemo ti javiti po potvrdi narudžbine.</p>
+          <p class="form-note-small">Ako nemate link — fotografiju pošaljite na naš Viber/WhatsApp koji ćemo vam javiti po potvrdi narudžbine.</p>
         </div>
 
         <hr class="form-divider">
@@ -2038,8 +1953,8 @@ footer {
 
         <div class="form-group">
           <label class="check-opt">
-            <input type="checkbox" id="f-stickers">
-            Dodaj 3 stikera sa istim motivom (+250 RSD)
+            <input type="checkbox" id="f-back-print">
+            Amo želite štampu i sa druge strane jastuka (+350 RSD)
           </label>
         </div>
 
@@ -2059,22 +1974,21 @@ footer {
 
         <button class="form-submit" onclick="submitOrder()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
-          Pošalji narudžbinu
+          Pošaljite narudžbinu
         </button>
 
         <p class="form-privacy">
           🔒 Podaci se koriste isključivo za obradu narudžbine.<br>
-          Nakon slanja, kontaktiraćemo te u roku od sat vremena sa potvrdom i dizajnom.
+          Nakon slanja, kontaktiraćemo vas u roku od sat vremena sa potvrdom i dizajnom.
         </p>
       </div>
 
-      <!-- Success -->
       <div class="form-success" id="form-success">
         <div class="success-circle">✓</div>
         <h3>Narudžbina primljena!</h3>
         <p>
-          Hvala ti na poverenju!<br><br>
-          Kontaktiraćemo te u roku od <strong>sat vremena</strong> na broj ili email koji si ostavio/la, kako bismo potvrdili detalje i poslali ti dizajn na uvid pre izrade.
+          Hvala vam na poverenju!<br><br>
+          Kontaktiraćemo vas u roku od <strong>sat vremena</strong> na broj ili email koji ste ostavili, kako bismo potvrdili detalje i poslali vam dizajn na uvid pre izrade.
         </p>
       </div>
     </div>
@@ -2083,10 +1997,10 @@ footer {
 
 <!-- CTA BANNER -->
 <section class="cta-banner">
-  <h2>Naruči svoj personalizovani jastuk već danas!</h2>
-  <p>Iznenadi svoje najdraže poklonom iz srca ❤</p>
+  <h2>Naručite svoj personalizovani jastuk već danas!</h2>
+  <p>Iznenadite svoje najdraže poklonom iz srca ❤</p>
   <a href="#naruci" class="btn-primary">
-    Poruči odmah
+    Naručite odmah
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
   <p class="cta-trust">🛡 Sigurna kupovina · 📦 Brza isporuka · ❤ 1000+ zadovoljnih kupaca</p>
@@ -2109,49 +2023,52 @@ footer {
       <a href="#proizvodi">Proizvodi</a>
       <a href="#recenzije">Recenzije</a>
       <a href="#faq">FAQ</a>
-      <a href="#naruci">Naruči odmah</a>
+      <a href="#naruci">Naručite odmah</a>
     </div>
 
     <div class="footer-col">
       <h4>Kontakt</h4>
-      <p>📞 +381 64 176 8447</p>
+      <p>📞 +381 64 363 8509</p>
       <p>📧 poklonizsrca@gmail.com</p>
       <p>📍 Beograd, Srbija</p>
     </div>
+
     <div class="footer-col">
       <h4>Pratite nas</h4>
       <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" rel="noopener" class="footer-social-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         Instagram
       </a>
-      <a href="viber://chat?number=381641768447" class="footer-social-link">
+      <a href="https://www.facebook.com/profile.php?id=61587498056983" target="_blank" rel="noopener" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="viber://chat?number=381643638509" class="footer-social-link">
         <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M11.4 0C5.5 0 1 4.3 1 9.6c0 2.8 1.3 5.4 3.5 7.2v3.7l3.4-1.9c1.1.3 2.3.5 3.5.5 5.9 0 10.4-4.3 10.4-9.6S17.3 0 11.4 0z"/></svg>
         Viber
       </a>
-      <a href="https://wa.me/381641768447" target="_blank" rel="noopener" class="footer-social-link">
+      <a href="https://wa.me/381643638509" target="_blank" rel="noopener" class="footer-social-link">
         <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
         WhatsApp
       </a>
       <div class="footer-instagram-follow">
         <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" rel="noopener" class="btn-follow">
-          ❤ Zaprati nas na Instagramu
+          ❤ Zapratite nas na Instagramu
         </a>
       </div>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <span>© 2024 Poklon iz srca. Sva prava zadržana.</span>
+    <span>© 2025 Poklon iz srca. Sva prava zadržana.</span>
     <span>Izrađeno sa ❤ u Srbiji</span>
   </div>
 </footer>
 
 <script>
-  // Shape selector
   function selectShape(btn) {
     document.querySelectorAll('.shape-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
-    // Also update the form select to match shape
     var shape = btn.getAttribute('data-shape');
     var sel = document.getElementById('f-type');
     if (sel) {
@@ -2166,7 +2083,6 @@ footer {
     }
   }
 
-  // Mobile nav
   document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('mobile-nav').classList.toggle('open');
   });
@@ -2181,7 +2097,6 @@ footer {
     }
   });
 
-  // FAQ
   document.querySelectorAll('.faq-q').forEach(function(q) {
     q.addEventListener('click', function() {
       const item = this.parentElement;
@@ -2191,7 +2106,6 @@ footer {
     });
   });
 
-  // Color swatches
   document.querySelectorAll('.color-dot').forEach(function(dot) {
     dot.addEventListener('click', function() {
       document.querySelectorAll('.color-dot').forEach(function(d) { d.classList.remove('active'); });
@@ -2200,7 +2114,6 @@ footer {
     });
   });
 
-  // Scroll reveal
   const revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -2208,7 +2121,6 @@ footer {
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
-  // Form submit
   function submitOrder() {
     const name = document.getElementById('f-name').value.trim();
     const phone = document.getElementById('f-phone').value.trim();
@@ -2231,7 +2143,7 @@ footer {
     const qty = document.getElementById('f-qty').value;
     const text = document.getElementById('f-text').value;
     const photo = document.getElementById('f-photo').value;
-    const stickers = document.getElementById('f-stickers').checked;
+    const backPrint = document.getElementById('f-back-print').checked;
     const note = document.getElementById('f-note').value;
     const zip = document.getElementById('f-zip').value;
 
@@ -2257,14 +2169,13 @@ footer {
       'Boja teksta: ' + color,
       'Pismo: ' + pismo,
       'Fotografija (link): ' + (photo || '—'),
-      'Stikeri: ' + (stickers ? 'Da (+250 RSD)' : 'Ne'),
+      'Štampa sa druge strane: ' + (backPrint ? 'Da (+350 RSD)' : 'Ne'),
       '',
       'NAPOMENA: ' + (note || '—'),
     ].join('\n'));
 
     window.location.href = 'mailto:poklonizsrca@gmail.com?subject=' + subject + '&body=' + body;
 
-    // Show success
     document.getElementById('form-body').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   }
