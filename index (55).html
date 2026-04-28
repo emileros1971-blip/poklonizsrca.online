@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poklon iz srca – Personalizovani jastuci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --crimson: #A31621;
+  --crimson-deep: #7B0D18;
+  --crimson-soft: #C0392B;
+  --rose: #E8726A;
+  --blush: #FDF0EE;
+  --blush-mid: #FAE4E2;
+  --cream: #FDFAF9;
+  --white: #FFFFFF;
+  --text: #1C0A0A;
+  --text-mid: #4A2020;
+  --text-muted: #8A5050;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════
+   HEART WATERMARK BACKGROUND
+═══════════════════════════════════════ */
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hearts-bg svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.028;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(253, 250, 249, 0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(163, 22, 33, 0.12);
+  height: 72px;
+  display: flex; align-items: center;
+  padding: 0 5%;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+
+/* Logo image - will show GitHub logo once uploaded */
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-logo-area {
+  display: flex; align-items: center;
+}
+
+/* Visible dashed placeholder box shown until logo is uploaded */
+.logo-placeholder-box {
+  display: flex; align-items: center;
+  gap: 4px;
+  border: 2px dashed rgba(163,22,33,0.45);
+  border-radius: 6px;
+  padding: 4px 10px 4px 6px;
+  background: rgba(163,22,33,0.04);
+  cursor: default;
+  transition: border-color 0.2s;
+}
+
+.logo-placeholder-box:hover {
+  border-color: var(--crimson);
+  background: rgba(163,22,33,0.07);
+}
+
+.logo-placeholder-inner {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* Fallback text logo shown until image is available */
+.nav-logo-fallback {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-logo-mark {
+  width: 42px; height: 42px;
+  background: var(--crimson);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(163,22,33,0.35);
+}
+
+.nav-logo-mark svg { width: 20px; height: 20px; fill: white; }
+
+.nav-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--crimson);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.nav-logo-text span {
+  display: block;
+  font-size: 0.62rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.nav-links {
+  display: flex; gap: 2.2rem; list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--crimson); }
+
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--crimson);
+  color: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: 2px;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.nav-cta:hover { background: var(--crimson-deep); transform: translateY(-1px); }
+
+.nav-social {
+  display: flex; align-items: center; gap: 8px;
+  margin-right: 1rem;
+}
+
+.nav-social-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.nav-social-btn svg { width: 17px; height: 17px; }
+
+.nav-social-btn:hover {
+  background: var(--blush);
+  color: var(--crimson);
+  transform: translateY(-1px);
+}
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--text); transition: all 0.3s;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  padding-top: 72px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 100%);
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+  pointer-events: none;
+}
+
+/* Decorative gold line accent */
+.hero-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--crimson), var(--gold), transparent);
+}
+
+.hero-content {
+  padding: 8% 6% 8% 9%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  position: relative; z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 1.6rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--crimson);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  line-height: 1.08;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.hero h1 em {
+  color: var(--crimson);
+  font-style: italic;
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.hero-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  margin-bottom: 1.8rem;
+}
+
+.hero-checkmarks {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.65rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-checkmarks li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--text-mid);
+}
+
+.hero-checkmarks li::before {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--crimson);
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-buttons {
+  display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--crimson);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 2px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(163,22,33,0.28);
+}
+
+.btn-primary:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(163,22,33,0.38);
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent;
+  color: var(--crimson);
+  padding: 13px 24px;
+  border-radius: 2px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border: 1px solid var(--crimson);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  background: var(--blush);
+}
+
+/* Shape selector in hero */
+.hero-shape-selector {
+  margin-bottom: 1.8rem;
+}
+
+.shape-label-text {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.shape-btns {
+  display: flex; gap: 0.8rem;
+}
+
+.shape-btn {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px;
+  padding: 12px 20px;
+  background: white;
+  border: 1.5px solid rgba(163,22,33,0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  transition: all 0.2s;
+  min-width: 100px;
+  color: var(--text-mid);
+}
+
+.shape-btn svg {
+  width: 28px; height: 28px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.shape-btn span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.shape-btn small {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.shape-btn.active,
+.shape-btn:hover {
+  border-color: var(--crimson);
+  background: var(--blush);
+  color: var(--crimson);
+}
+
+.shape-btn.active svg,
+.shape-btn:hover svg {
+  color: var(--crimson);
+}
+
+.hero-right {
+  display: flex; align-items: center; justify-content: center;
+  padding: 5% 6% 5% 2%;
+  position: relative; z-index: 2;
+}
+
+/* Hero pillow visual */
+.hero-pillow-wrap {
+  position: relative;
+  width: 100%; max-width: 500px;
+}
+
+.pillow-visual-main {
+  width: 100%;
+  filter: drop-shadow(0 20px 50px rgba(163,22,33,0.22));
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+}
+
+.hero-badge-floating {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  display: flex; align-items: center; gap: 10px;
+  animation: float2 4s ease-in-out infinite;
+  border: 1px solid rgba(163,22,33,0.1);
+}
+
+.hero-badge-floating.b1 { bottom: 15%; left: -5%; animation-delay: 0s; }
+.hero-badge-floating.b2 { top: 15%; right: -2%; animation-delay: 2s; }
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.badge-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--blush);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.badge-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; }
+.badge-val { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+
+/* ═══════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════ */
+.section {
+  position: relative; z-index: 1;
+  padding: 6rem 8%;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 1rem;
+}
+
+.eyebrow::before, .eyebrow::after {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--crimson);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+}
+
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Contact bar */
+.contact-bar {
+  background: var(--blush-mid);
+  border-top: 1px solid rgba(163,22,33,0.1);
+  border-bottom: 1px solid rgba(163,22,33,0.1);
+  padding: 0.8rem 8%;
+  position: relative; z-index: 1;
+}
+
+.contact-bar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+
+.contact-bar-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-bar-item {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-mid);
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid rgba(163,22,33,0.15);
+  transition: all 0.2s;
+}
+
+.contact-bar-item:hover { border-color: var(--crimson); color: var(--crimson); }
+.contact-bar-item.viber { color: #7360F2; border-color: rgba(115,96,242,0.3); }
+.contact-bar-item.viber:hover { background: rgba(115,96,242,0.05); }
+.contact-bar-item.whatsapp { color: #25D366; border-color: rgba(37,211,102,0.3); }
+.contact-bar-item.whatsapp:hover { background: rgba(37,211,102,0.05); }
+.contact-bar-item.instagram { color: #E1306C; border-color: rgba(225,48,108,0.3); }
+.contact-bar-item.instagram:hover { background: rgba(225,48,108,0.05); }
+
+/* How steps */
+.how { background: var(--white); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.step-connector {
+  position: absolute;
+  top: 44px;
+  left: calc(16.66% + 22px);
+  right: calc(16.66% + 22px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--crimson), var(--rose), var(--crimson));
+  opacity: 0.3;
+}
+
+.step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.step-num {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid rgba(163,22,33,0.2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative; z-index: 1;
+  transition: all 0.3s;
+}
+
+.step:hover .step-num {
+  background: var(--crimson);
+  border-color: var(--crimson);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(163,22,33,0.3);
+}
+
+.step-num svg {
+  width: 32px; height: 32px;
+  fill: none;
+  stroke: var(--crimson);
+  stroke-width: 1.5;
+  transition: stroke 0.3s;
+}
+
+.step:hover .step-num svg { stroke: white; }
+
+.step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════
+   PRODUCTS
+═══════════════════════════════════════ */
+.products { background: var(--blush); }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.8rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(163,22,33,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(163,22,33,0.14);
+  border-color: rgba(163,22,33,0.3);
+}
+
+.product-img-area {
+  height: 210px;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--blush-mid) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-shape-label {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--crimson);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.product-body {
+  padding: 1.4rem 1.5rem;
+}
+
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.product-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+}
+
+.product-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--blush);
+}
+
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--crimson);
+}
+
+.btn-sm {
+  background: var(--crimson);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 2px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.btn-sm:hover { background: var(--crimson-deep); }
+
+/* ═══════════════════════════════════════
+   WHY US
+═══════════════════════════════════════ */
+.why { background: var(--white); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.why-item {
+  display: flex; flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px solid rgba(163,22,33,0.08);
+  border-radius: 4px;
+  background: var(--cream);
+  transition: all 0.25s;
+}
+
+.why-item:hover {
+  border-color: rgba(163,22,33,0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(163,22,33,0.08);
+}
+
+.why-icon {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: var(--blush);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.why-icon svg {
+  width: 24px; height: 24px;
+  fill: none;
+  stroke: var(--crimson);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-item h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.why-item p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   REVIEWS
+═══════════════════════════════════════ */
+.reviews {
+  background: var(--crimson);
+  position: relative;
+  overflow: hidden;
+}
+
+.reviews::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 C30 10 20 4 15 10 C10 16 15 24 30 31 C45 24 50 16 45 10 C40 4 30 10 30 10Z' fill='white' opacity='0.04'/%3E%3C/svg%3E") repeat;
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.reviews .section-title { color: white; }
+.reviews .section-sub { color: rgba(255,255,255,0.7); }
+.reviews .eyebrow { color: rgba(255,255,255,0.7); }
+.reviews .eyebrow::before, .reviews .eyebrow::after { background: rgba(255,255,255,0.4); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.review-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 4px;
+  padding: 1.8rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.25s, background 0.25s;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.15);
+}
+
+.review-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  line-height: 0.6;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.stars {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  margin-bottom: 0.9rem;
+}
+
+.review-text {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.88);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+.reviewer {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+.faq { background: var(--cream); }
+
+.faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(163,22,33,0.1);
+}
+
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.3rem 0;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--text);
+  gap: 1rem;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.faq-q:hover { color: var(--crimson); }
+
+.faq-toggle {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--blush);
+  color: var(--crimson);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 300;
+  transition: all 0.25s;
+  border: 1px solid rgba(163,22,33,0.15);
+}
+
+.faq-item.open .faq-toggle {
+  background: var(--crimson);
+  color: white;
+  transform: rotate(45deg);
+  border-color: var(--crimson);
+}
+
+.faq-a {
+  display: none;
+  padding: 0 0 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 580px;
+}
+
+.faq-item.open .faq-a { display: block; }
+
+/* ═══════════════════════════════════════
+   ORDER FORM
+═══════════════════════════════════════ */
+.order { background: var(--white); }
+
+.form-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--cream);
+  border: 1px solid rgba(163,22,33,0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.form-header {
+  background: var(--crimson);
+  padding: 1.5rem 2.5rem;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.form-header svg { width: 22px; height: 22px; fill: none; stroke: rgba(255,255,255,0.8); stroke-width: 1.5; }
+.form-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.02em;
+}
+.form-header p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.form-body { padding: 2.2rem 2.5rem; }
+
+.form-section-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(163,22,33,0.12);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex; flex-direction: column; gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-mid);
+}
+
+.form-group label .req { color: var(--crimson); margin-left: 2px; }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid rgba(163,22,33,0.2);
+  border-radius: 2px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  background: white;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--crimson);
+  box-shadow: 0 0 0 3px rgba(163,22,33,0.08);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.55;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A31621' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 34px;
+  cursor: pointer;
+}
+
+.form-divider {
+  border: none;
+  border-top: 1px solid rgba(163,22,33,0.1);
+  margin: 1.5rem 0;
+}
+
+.radio-group, .checkbox-group {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.radio-opt, .check-opt {
+  display: flex; align-items: center; gap: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.radio-opt input[type="radio"],
+.check-opt input[type="checkbox"] {
+  accent-color: var(--crimson);
+  width: 15px; height: 15px;
+  cursor: pointer;
+}
+
+/* Color palette */
+.color-palette {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 6px;
+  padding-bottom: 22px;
+}
+
+.color-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.color-dot.active, .color-dot:hover {
+  border-color: var(--crimson);
+  transform: scale(1.2);
+}
+
+.color-dot::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -18px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-family: 'Jost', sans-serif;
+}
+
+.form-note-small {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--crimson);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 0.5rem;
+}
+
+.form-submit:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(163,22,33,0.35);
+}
+
+.form-privacy {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Success state */
+.form-success {
+  display: none;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+}
+
+.success-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: #27AE60;
+  margin: 0 auto 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.form-success h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--text);
+}
+
+.form-success p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════
+   CTA BANNER
+═══════════════════════════════════════ */
+.cta-banner {
+  background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 60%, var(--rose) 100%);
+  padding: 5rem 8%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 15 C40 15 26 6 20 14 C13 22 20 33 40 43 C60 33 67 22 60 14 C54 6 40 15 40 15Z' fill='white' opacity='0.035'/%3E%3C/svg%3E") repeat;
+  background-size: 80px;
+  pointer-events: none;
+}
+
+.cta-banner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.cta-banner p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.cta-banner .btn-primary {
+  background: white;
+  color: var(--crimson);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.cta-banner .btn-primary:hover {
+  background: var(--cream);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+}
+
+.cta-trust {
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  position: relative;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: #120505;
+  padding: 4rem 8% 2rem;
+  position: relative; z-index: 1;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  max-width: 1100px;
+  margin-left: auto; margin-right: auto;
+}
+
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--rose);
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.footer-brand-name svg { fill: var(--rose); width: 16px; height: 16px; }
+
+.footer-tagline {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  max-width: 260px;
+  font-style: italic;
+}
+
+.footer-col h4 {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.2rem;
+}
+
+.footer-col a, .footer-col p {
+  display: block;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 0.65rem;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--rose); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap; gap: 0.5rem;
+}
+
+.footer-social-link {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.6) !important;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 0.65rem;
+  transition: color 0.2s;
+}
+
+.footer-social-link:hover { color: var(--rose) !important; }
+
+.footer-instagram-follow {
+  margin-top: 0.8rem;
+}
+
+.btn-follow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, #E1306C, #833AB4);
+  color: white !important;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-follow:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+.mobile-nav {
+  display: none;
+  position: fixed; top: 72px; left: 0; right: 0;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(163,22,33,0.12);
+  padding: 1.5rem 6%;
+  flex-direction: column; gap: 1rem;
+  z-index: 199;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  text-decoration: none; color: var(--text-mid);
+  font-size: 0.88rem; font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0;
+}
+.mobile-nav .nav-cta { align-self: flex-start; margin-top: 0.3rem; }
+.mobile-social {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(163,22,33,0.1);
+  margin-top: 0.3rem;
+}
+.mobile-social a {
+  font-size: 0.82rem;
+  color: var(--crimson) !important;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-content { padding: 5rem 6% 4rem; }
+  .steps-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .step-connector { display: none; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  nav .nav-links, nav .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-body { padding: 1.8rem 1.6rem; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 4rem 5%; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEART WATERMARK BG -->
+<div class="hearts-bg" aria-hidden="true">
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="hearts" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+        <!-- Large heart -->
+        <path d="M60 45 C60 45 46 36 40 42 C33 49 40 58 60 68 C80 58 87 49 80 42 C74 36 60 45 60 45Z" fill="#A31621"/>
+        <!-- Small heart offset -->
+        <path d="M20 90 C20 90 14 86 11 89 C8 92 11 97 20 101 C29 97 32 92 29 89 C26 86 20 90 20 90Z" fill="#A31621"/>
+        <!-- Tiny heart -->
+        <path d="M100 15 C100 15 96 12 94 14 C92 17 94 20 100 23 C106 20 108 17 106 14 C104 12 100 15 100 15Z" fill="#A31621"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hearts)"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!--
+      LOGO PLACEHOLDER:
+      Replace the fallback below with:
+    -->
+    <!--
+      ╔══════════════════════════════════════════╗
+      ║  LOGO PLACEHOLDER                        ║
+      ║  Kada dobiješ GitHub URL slike, zameni:  ║
+      ║  src="YOUR_GITHUB_LOGO_URL_HERE"         ║
+      ║  Slika će automatski zameniti placeholder ║
+      ╚══════════════════════════════════════════╝
+    -->
+    <div class="nav-logo-area">
+      <!-- LOGO IMAGE: swap src with your GitHub raw URL -->
+      <img
+        id="site-logo"
+        src="YOUR_GITHUB_LOGO_URL_HERE"
+        alt="Poklon iz srca"
+        style="height:48px; width:auto; object-fit:contain; display:none;"
+        onload="this.style.display='block'; document.getElementById('logo-placeholder').style.display='none';"
+      >
+      <!-- VISIBLE PLACEHOLDER shown until real logo is uploaded -->
+      <div id="logo-placeholder" class="logo-placeholder-box">
+        <div class="logo-placeholder-inner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A31621" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9l4-4 4 4 4-5 4 5"/><circle cx="8.5" cy="13.5" r="1.5"/></svg>
+          <span>Logo ovde</span>
+        </div>
+        <div class="nav-logo-text" style="margin-left:10px;">
+          Poklon iz srca
+          <span>Personalizovani jastuci</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#kako-funkcionise">Kako naručiti</a></li>
+    <li><a href="#proizvodi">Proizvodi</a></li>
+    <li><a href="#recenzije">Recenzije</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" rel="noopener" class="nav-social-btn" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="viber://chat?number=381641768447" class="nav-social-btn" aria-label="Viber">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C5.5 0 1 4.3 1 9.6c0 2.8 1.3 5.4 3.5 7.2v3.7l3.4-1.9c1.1.3 2.3.5 3.5.5 5.9 0 10.4-4.3 10.4-9.6S17.3 0 11.4 0zm1 13.1l-2.5-2.7-4.9 2.7 5.4-5.8 2.6 2.7 4.8-2.7-5.4 5.8z"/></svg>
+    </a>
+    <a href="https://wa.me/381641768447" target="_blank" rel="noopener" class="nav-social-btn" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+  </div>
+
+  <a href="#naruci" class="nav-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    Naruči odmah
+  </a>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#kako-funkcionise" onclick="closeMobile()">Kako naručiti</a>
+  <a href="#proizvodi" onclick="closeMobile()">Proizvodi</a>
+  <a href="#recenzije" onclick="closeMobile()">Recenzije</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#naruci" class="nav-cta" onclick="closeMobile()">Naruči odmah</a>
+  <div class="mobile-social">
+    <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" onclick="closeMobile()">📷 Instagram</a>
+    <a href="viber://chat?number=381641768447" onclick="closeMobile()">💬 Viber</a>
+    <a href="https://wa.me/381641768447" target="_blank" onclick="closeMobile()">💬 WhatsApp</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-accent"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Personalizovani pokloni</div>
+
+    <h1>
+      Poklon koji<br>
+      dolazi <em>iz srca</em>
+    </h1>
+
+    <p class="hero-tagline">
+      Jastuci sa tvojom fotografijom, imenom ili porukom —<br>
+      savršen poklon za svaku posebnu priliku.
+    </p>
+
+    <!-- SHAPE SELECTOR - visible immediately in hero -->
+    <div class="hero-shape-selector">
+      <div class="shape-label-text">Izaberi oblik jastuka:</div>
+      <div class="shape-btns">
+        <button class="shape-btn active" data-shape="kvadratni" onclick="selectShape(this)">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="32" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span>Kvadratni</span>
+          <small>35×35 cm</small>
+        </button>
+        <button class="shape-btn" data-shape="srcoliki" onclick="selectShape(this)">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 32 C20 32 5 22 5 13 C5 7 10 4 15 6 C17 7 19 9 20 11 C21 9 23 7 25 6 C30 4 35 7 35 13 C35 22 20 32 20 32Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span>Srcoliki</span>
+          <small>Oblik srca</small>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-divider"></div>
+
+    <ul class="hero-checkmarks">
+      <li>Personalizacija po tvojoj želji</li>
+      <li>Brza izrada 1–2 dana</li>
+      <li>Plaćanje pouzećem — platiš tek kad prime paket</li>
+      <li>Dostava na celu teritoriju Srbije</li>
+    </ul>
+
+    <div class="hero-buttons">
+      <a href="#naruci" class="btn-primary">
+        Naruči odmah
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#proizvodi" class="btn-ghost">Pogledaj proizvode</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-pillow-wrap">
+      <!-- Square Pillow SVG -->
+      <svg class="pillow-visual-main" viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FFFFFF"/>
+            <stop offset="100%" style="stop-color:#FDF0EE"/>
+          </linearGradient>
+          <filter id="ps1" x="-15%" y="-15%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="10" stdDeviation="22" flood-color="#A31621" flood-opacity="0.2"/>
+          </filter>
+          <clipPath id="pillowClip">
+            <ellipse cx="230" cy="200" rx="195" ry="168"/>
+          </clipPath>
+        </defs>
+        <!-- Pillow shape -->
+        <ellipse cx="230" cy="200" rx="195" ry="168" fill="url(#pg1)" filter="url(#ps1)" stroke="#F0D5D3" stroke-width="1"/>
+        <!-- Inner seam -->
+        <ellipse cx="230" cy="200" rx="178" ry="152" fill="none" stroke="#EAC8C5" stroke-width="1" stroke-dasharray="6,5"/>
+        <!-- Heart photo frame -->
+        <path d="M230 145 C230 145 192 120 175 138 C158 156 175 180 230 205 C285 180 302 156 285 138 C268 120 230 145 230 145Z" fill="#A31621" opacity="0.12"/>
+        <path d="M230 142 C230 142 194 118 176 137 C159 157 177 181 230 206 C283 181 301 157 284 137 C266 118 230 142 230 142Z" fill="none" stroke="#A31621" stroke-width="1.5" opacity="0.35"/>
+        <!-- Name -->
+        <text x="230" y="252" font-family="Georgia, serif" font-size="30" font-style="italic" font-weight="700" fill="#A31621" text-anchor="middle" opacity="0.9">Maša</text>
+        <!-- Small hearts -->
+        <path d="M130 140 C130 140 124 136 121 139 C118 142 121 147 130 151 C139 147 142 142 139 139 C136 136 130 140 130 140Z" fill="#A31621" opacity="0.22"/>
+        <path d="M332 140 C332 140 326 136 323 139 C320 142 323 147 332 151 C341 147 344 142 341 139 C338 136 332 140 332 140Z" fill="#A31621" opacity="0.22"/>
+        <path d="M160 90 C160 90 155 87 153 89 C151 91 153 95 160 97 C167 95 169 91 167 89 C165 87 160 90 160 90Z" fill="#A31621" opacity="0.15"/>
+        <path d="M300 90 C300 90 295 87 293 89 C291 91 293 95 300 97 C307 95 309 91 307 89 C305 87 300 90 300 90Z" fill="#A31621" opacity="0.15"/>
+        <!-- Pillow corner puffs -->
+        <ellipse cx="68" cy="110" rx="28" ry="20" fill="white" opacity="0.6"/>
+        <ellipse cx="392" cy="110" rx="28" ry="20" fill="white" opacity="0.6"/>
+        <ellipse cx="68" cy="290" rx="28" ry="20" fill="white" opacity="0.6"/>
+        <ellipse cx="392" cy="290" rx="28" ry="20" fill="white" opacity="0.6"/>
+      </svg>
+
+      <div class="hero-badge-floating b1">
+        <div class="badge-icon">⚡</div>
+        <div>
+          <div class="badge-label">Izrada</div>
+          <div class="badge-val">1–2 dana</div>
+        </div>
+      </div>
+
+      <div class="hero-badge-floating b2">
+        <div class="badge-icon">📦</div>
+        <div>
+          <div class="badge-label">Dostava</div>
+          <div class="badge-val">Pouzeće</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL CONTACT BAR -->
+<div class="contact-bar">
+  <div class="contact-bar-inner">
+    <span class="contact-bar-label">Kontaktiraj nas direktno:</span>
+    <a href="tel:+381641768447" class="contact-bar-item">
+      📞 +381 64 176 8447
+    </a>
+    <a href="viber://chat?number=381641768447" class="contact-bar-item viber">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M11.4 0C5.5 0 1 4.3 1 9.6c0 2.8 1.3 5.4 3.5 7.2v3.7l3.4-1.9c1.1.3 2.3.5 3.5.5 5.9 0 10.4-4.3 10.4-9.6S17.3 0 11.4 0z"/></svg>
+      Viber
+    </a>
+    <a href="https://wa.me/381641768447" target="_blank" class="contact-bar-item whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" class="contact-bar-item instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagram
+    </a>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section how" id="kako-funkcionise">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="eyebrow">Kako naručiti?</div>
+      <h2 class="section-title">Tri jednostavna koraka</h2>
+      <p class="section-sub">Naruči personalizovani jastuk za samo par minuta — mi se brinemo o svemu ostalom.</p>
+    </div>
+
+    <div class="steps-grid reveal">
+      <div class="step-connector"></div>
+
+      <div class="step">
+        <div class="step-num">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+        </div>
+        <h3>Popuni formu</h3>
+        <p>Unesi kontakt podatke i detalje — fotografiju, tekst, stil fonta i sve što želiš na jastuku.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Mi dizajniramo</h3>
+        <p>Naš tim kreira dizajn i šalje ti ga na uvid pre izrade. Sve usklađujemo prema tvojim željama.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Dobijaš na adresu</h3>
+        <p>Brzom poštom šaljemo paket direktno do tebe. Platiš pouzećem — tek kada prime paket.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products" id="proizvodi">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="eyebrow">Naši proizvodi</div>
+      <h2 class="section-title">Personalizovani jastuci za svaku priliku</h2>
+      <p class="section-sub">Kvadratni i srcoliki jastuci — svaki jedinstven, baš kao i osoba kojoj ga poklanjate.</p>
+    </div>
+
+    <div class="products-grid reveal">
+
+      <!-- Product 1: Name pillow - square -->
+      <div class="product-card">
+        <div class="product-img-area">
+          <span class="product-shape-label">Kvadratni</span>
+          <svg width="150" height="130" viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="75" cy="65" rx="66" ry="57" fill="#FDF0EE" stroke="#F0D5D3" stroke-width="1"/>
+            <ellipse cx="75" cy="65" rx="59" ry="50" fill="none" stroke="#EAC8C5" stroke-width="0.8" stroke-dasharray="4,3"/>
+            <text x="75" y="58" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#A31621" text-anchor="middle">Luka</text>
+            <path d="M75 70 C75 70 62 63 57 68 C52 73 57 81 75 87 C93 81 98 73 93 68 C88 63 75 70 75 70Z" fill="#A31621" opacity="0.15"/>
+            <circle cx="46" cy="42" r="5" fill="#A31621" opacity="0.18"/>
+            <circle cx="104" cy="42" r="5" fill="#A31621" opacity="0.18"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Jastuk sa imenom</div>
+          <div class="product-desc">Personalizovani jastuk sa imenom djeteta ili voljene osobe. Razne boje i stilovi fonta — latinica ili ćirilica.</div>
+          <div class="product-footer">
+            <div class="product-price">od 1.500 RSD</div>
+            <a href="#naruci" class="btn-sm">Naruči</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Photo pillow - heart shaped -->
+      <div class="product-card">
+        <div class="product-img-area">
+          <span class="product-shape-label">Srcoliki</span>
+          <svg width="150" height="140" viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
+            <path d="M75 125 C75 125 18 80 18 45 C18 22 35 12 52 18 C62 22 70 30 75 38 C80 30 88 22 98 18 C115 12 132 22 132 45 C132 80 75 125 75 125Z" fill="#FDF0EE" stroke="#F0D5D3" stroke-width="1"/>
+            <path d="M75 120 C75 120 24 77 24 46 C24 26 39 17 55 23 C64 26 72 33 75 41 C78 33 86 26 95 23 C111 17 126 26 126 46 C126 77 75 120 75 120Z" fill="none" stroke="#EAC8C5" stroke-width="0.8" stroke-dasharray="4,3"/>
+            <rect x="52" y="30" width="46" height="46" rx="6" fill="#A31621" opacity="0.12"/>
+            <text x="75" y="53" font-family="Arial" font-size="9" fill="#A31621" text-anchor="middle" opacity="0.7">tvoja slika</text>
+            <text x="75" y="90" font-family="Georgia,serif" font-size="11" font-weight="700" font-style="italic" fill="#A31621" text-anchor="middle">Volim te mama!</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Srcoliki jastuk sa slikom</div>
+          <div class="product-desc">Tvoja fotografija odštampana na srcolikom jastuku. Mekan, udoban i čvrst. Jastučnica se skida i može da se pere.</div>
+          <div class="product-footer">
+            <div class="product-price">od 1.800 RSD</div>
+            <a href="#naruci" class="btn-sm">Naruči</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: Character pillow - square -->
+      <div class="product-card">
+        <div class="product-img-area">
+          <span class="product-shape-label">Kvadratni</span>
+          <svg width="150" height="130" viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="75" cy="65" rx="66" ry="57" fill="#FDF0EE" stroke="#F0D5D3" stroke-width="1"/>
+            <ellipse cx="75" cy="65" rx="59" ry="50" fill="none" stroke="#EAC8C5" stroke-width="0.8" stroke-dasharray="4,3"/>
+            <circle cx="75" cy="52" r="18" fill="#A31621" opacity="0.13"/>
+            <text x="75" y="57" font-size="11" text-anchor="middle" fill="#A31621" opacity="0.6">🌟 junak</text>
+            <text x="75" y="84" font-family="Georgia,serif" font-size="14" font-weight="700" font-style="italic" fill="#A31621" text-anchor="middle">Sofija</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Jastuk sa junakom</div>
+          <div class="product-desc">Omiljeni crtani junaci kombinovani sa imenom deteta. Idealan poklon za decu — oduševljava na prvu.</div>
+          <div class="product-footer">
+            <div class="product-price">od 1.600 RSD</div>
+            <a href="#naruci" class="btn-sm">Naruči</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4: Message pillow - heart shaped -->
+      <div class="product-card">
+        <div class="product-img-area">
+          <span class="product-shape-label">Srcoliki</span>
+          <svg width="150" height="140" viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
+            <path d="M75 125 C75 125 18 80 18 45 C18 22 35 12 52 18 C62 22 70 30 75 38 C80 30 88 22 98 18 C115 12 132 22 132 45 C132 80 75 125 75 125Z" fill="#FDF0EE" stroke="#F0D5D3" stroke-width="1"/>
+            <path d="M75 120 C75 120 24 77 24 46 C24 26 39 17 55 23 C64 26 72 33 75 41 C78 33 86 26 95 23 C111 17 126 26 126 46 C126 77 75 120 75 120Z" fill="none" stroke="#EAC8C5" stroke-width="0.8" stroke-dasharray="4,3"/>
+            <text x="75" y="58" font-family="Georgia,serif" font-size="9" font-style="italic" fill="#A31621" text-anchor="middle" opacity="0.8">Srećan</text>
+            <text x="75" y="72" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#A31621" text-anchor="middle">Rođendan!</text>
+            <text x="75" y="88" font-family="Arial" font-size="8" fill="#C0392B" text-anchor="middle" opacity="0.6">25.04.2024.</text>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Srcoliki jastuk sa porukom</div>
+          <div class="product-desc">Posebna poruka, datum ili citat koji ostaje zauvek. Za rođendan, godišnjicu ili znak pažnje.</div>
+          <div class="product-footer">
+            <div class="product-price">od 1.400 RSD</div>
+            <a href="#naruci" class="btn-sm">Naruči</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section why">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="eyebrow">Zašto mi?</div>
+      <h2 class="section-title">Zašto kupiti kod nas</h2>
+      <p class="section-sub">Ponosimo se kvalitetom, brzinom i pažnjom prema svakom naručiocu.</p>
+    </div>
+    <div class="why-grid reveal">
+
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Unikatni dizajn</h3>
+        <p>Svaki jastuk dizajnira naš tim ručno, prema tvojim željama.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Brza izrada</h3>
+        <p>Izrada 1–2 dana. Hitne narudžbine dostupne na upit.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>Plaćanje pouzećem</h3>
+        <p>Platiš tek kada poštar donese paket. Nema avansnih uplata.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Dostava po Srbiji</h3>
+        <p>Brzom poštom na svaku adresu — cela teritorija Srbije.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Periv materijal</h3>
+        <p>Jastučnica se skida i može da se pere. Štampa ostaje živa.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="recenzije">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="eyebrow">Recenzije</div>
+      <h2 class="section-title">Šta naši kupci kažu</h2>
+      <p class="section-sub">Više od 1.000 zadovoljnih kupaca širom Srbije.</p>
+    </div>
+    <div class="reviews-grid reveal">
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Prelep jastuk, dete oduševljeno! Kvalitet je vrhunski, sve preporučujem. Definitivno ću ponovo naručivati — savršen poklon za svaku prigodu.</p>
+        <div class="reviewer">— Marija P., Beograd</div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Brza izrada i dostava. Jastuk je još lepši uživo! Naručila sam srcoliki jastuk za godišnjicu — partnerka bila presrećna. Apsolutno preporučujem!</p>
+        <div class="reviewer">— Nikola K., Novi Sad</div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Već drugi put naručujem i uvek sve savršeno. Komunikacija odlična, dizajn tačno onako kako sam zamislila. Pravi poklon iz srca — hvala vam puno!</p>
+        <div class="reviewer">— Jelena M., Niš</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="eyebrow">Pitanja i odgovori</div>
+      <h2 class="section-title">Često postavljana pitanja</h2>
+      <p class="section-sub">Sve što trebaš znati pre narudžbine.</p>
+    </div>
+    <div class="faq-inner reveal">
+
+      <div class="faq-item">
+        <div class="faq-q">Koliko traje izrada? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Izrada traje 1 do 2 radna dana. Za hitne narudžbine kontaktirajte nas direktno i pokušaćemo da ubrzamo proces prema vašim potrebama.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Da li mogu da pošaljem svoju fotografiju? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Da — kupac šalje svoju fotografiju prilikom poručivanja. Fotografiju možeš priložiti kao link (WeTransfer, Google Drive i sl.) ili je pošalješ direktno na naš broj. Preporučujemo fotografije visoke rezolucije za što bolji kvalitet štampe.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Da li šaljete na kućnu adresu? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Da, šaljemo paket brzom poštom na adresu kupca — cela teritorija Srbije. Troškove dostave možeš proveriti pri narudžbini.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Kako se vrši plaćanje? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Plaćanje se vrši isključivo pouzećem — platiš tek kada poštar donese paket do tvoje adrese. Nema avansnih uplata niti onlajn plaćanja.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Da li se jastučnica može prati? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Da! Jastučnica se skida i može da se pere u mašini na 30°C. Preporučujemo pranje unutra-naopako kako bi štampa što duže ostala živa i intenzivna.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Koje su dimenzije i oblici jastuka? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Nudimo kvadratne jastuke dimenzija 35×35 cm i srcolike jastuke. Oba oblika su mekana, udobna i čvrsta — idealna za grljenje ili dekoraciju. Za posebne dimenzije kontaktiraj nas pre narudžbine.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Mogu li da dodam stikere uz narudžbinu? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Da! Možeš dodati paket od 3 stikera sa istim motivom kao na jastuku uz doplatu od 250 RSD. Opcija je dostupna u formi za narudžbinu.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Da li mogu da biram boju i stil fonta? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Naravno! Možeš izabrati boju teksta (crvena, crna, bela, plava, zlatna, ljubičasta, zelena), pismo (latinica ili ćirilica), kao i upisati posebne instrukcije za stil fonta u napomeni.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="section order" id="naruci">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="eyebrow">Narudžbina</div>
+      <h2 class="section-title">Naruči svoj jastuk</h2>
+      <p class="section-sub">Popuni formu — kontaktiraćemo te u roku od sat vremena sa potvrdom i dizajnom na uvid.</p>
+    </div>
+
+    <div class="form-wrap reveal">
+      <div class="form-header">
+        <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        <div>
+          <h3>Forma za narudžbinu</h3>
+          <p>Sva polja označena sa * su obavezna</p>
+        </div>
+      </div>
+
+      <div class="form-body" id="form-body">
+
+        <!-- Contact -->
+        <div class="form-section-label">Kontakt podaci</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ime i prezime <span class="req">*</span></label>
+            <input type="text" id="f-name" placeholder="npr. Ana Jovanović">
+          </div>
+          <div class="form-group">
+            <label>Broj telefona <span class="req">*</span></label>
+            <input type="tel" id="f-phone" placeholder="npr. 064 123 4567">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email adresa <span class="req">*</span></label>
+          <input type="email" id="f-email" placeholder="npr. ana@email.com">
+        </div>
+
+        <hr class="form-divider">
+        <!-- Delivery -->
+        <div class="form-section-label">Adresa za dostavu</div>
+        <div class="form-group">
+          <label>Ulica i broj <span class="req">*</span></label>
+          <input type="text" id="f-street" placeholder="npr. Knez Mihajlova 12">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Grad <span class="req">*</span></label>
+            <input type="text" id="f-city" placeholder="npr. Beograd">
+          </div>
+          <div class="form-group">
+            <label>Poštanski broj</label>
+            <input type="text" id="f-zip" placeholder="npr. 11000">
+          </div>
+        </div>
+
+        <hr class="form-divider">
+        <!-- Order details -->
+        <div class="form-section-label">Detalji narudžbine</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tip jastuka <span class="req">*</span></label>
+            <select id="f-type">
+              <option value="">— Izaberi tip —</option>
+              <optgroup label="Kvadratni jastuci">
+                <option>Kvadratni — sa imenom</option>
+                <option>Kvadratni — sa slikom</option>
+                <option>Kvadratni — sa junakom</option>
+                <option>Kvadratni — sa porukom</option>
+              </optgroup>
+              <optgroup label="Srcoliki jastuci">
+                <option>Srcoliki — sa imenom</option>
+                <option>Srcoliki — sa slikom</option>
+                <option>Srcoliki — sa porukom</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Količina</label>
+            <select id="f-qty">
+              <option>1 komad</option>
+              <option>2 komada</option>
+              <option>3 komada</option>
+              <option>4 ili više (kontaktiramo te)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Tekst koji treba da se nađe na jastuku</label>
+          <textarea id="f-text" placeholder="Upiši ime, poruku, datum, citat ili bilo koji tekst. Slobodno navedi i željeni stil (rukopis, štampana slova, bold, tanko...)"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Izaberi boju teksta</label>
+          <div class="color-palette" id="color-palette">
+            <div class="color-dot active" style="background:#A31621" data-name="Crvena" data-color="Crvena"></div>
+            <div class="color-dot" style="background:#1A1A1A" data-name="Crna" data-color="Crna"></div>
+            <div class="color-dot" style="background:#FFFFFF;border:1.5px solid #ddd" data-name="Bela" data-color="Bela"></div>
+            <div class="color-dot" style="background:#1A5276" data-name="Plava" data-color="Plava"></div>
+            <div class="color-dot" style="background:#C9A84C" data-name="Zlatna" data-color="Zlatna"></div>
+            <div class="color-dot" style="background:#6C3483" data-name="Ljubičasta" data-color="Ljubičasta"></div>
+            <div class="color-dot" style="background:#1E8449" data-name="Zelena" data-color="Zelena"></div>
+          </div>
+          <input type="hidden" id="f-color" value="Crvena">
+        </div>
+
+        <div class="form-group">
+          <label>Izaberi pismo</label>
+          <div class="radio-group">
+            <label class="radio-opt">
+              <input type="radio" name="pismo" value="Latinica" checked> Latinica
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="pismo" value="Ćirilica"> Ćirilica
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Link do fotografije (opciono)</label>
+          <input type="url" id="f-photo" placeholder="WeTransfer, Google Drive, Dropbox...">
+          <p class="form-note-small">Ako nemaš link — fotografiju pošalji na naš Viber/WhatsApp koji ćemo ti javiti po potvrdi narudžbine.</p>
+        </div>
+
+        <hr class="form-divider">
+        <div class="form-section-label">Dodaci</div>
+
+        <div class="form-group">
+          <label class="check-opt">
+            <input type="checkbox" id="f-stickers">
+            Dodaj 3 stikera sa istim motivom (+250 RSD)
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>Napomena</label>
+          <textarea id="f-note" placeholder="Posebni zahtevi, referentna slika, rok isporuke, stil fonta..." style="min-height:70px;"></textarea>
+        </div>
+
+        <hr class="form-divider">
+
+        <div class="form-group">
+          <label class="check-opt" id="terms-wrap">
+            <input type="checkbox" id="f-terms">
+            Slažem se da me kontaktirate radi potvrde narudžbine i slanja dizajna pre izrade. <span class="req">*</span>
+          </label>
+        </div>
+
+        <button class="form-submit" onclick="submitOrder()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Pošalji narudžbinu
+        </button>
+
+        <p class="form-privacy">
+          🔒 Podaci se koriste isključivo za obradu narudžbine.<br>
+          Nakon slanja, kontaktiraćemo te u roku od sat vremena sa potvrdom i dizajnom.
+        </p>
+      </div>
+
+      <!-- Success -->
+      <div class="form-success" id="form-success">
+        <div class="success-circle">✓</div>
+        <h3>Narudžbina primljena!</h3>
+        <p>
+          Hvala ti na poverenju!<br><br>
+          Kontaktiraćemo te u roku od <strong>sat vremena</strong> na broj ili email koji si ostavio/la, kako bismo potvrdili detalje i poslali ti dizajn na uvid pre izrade.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Naruči svoj personalizovani jastuk već danas!</h2>
+  <p>Iznenadi svoje najdraže poklonom iz srca ❤</p>
+  <a href="#naruci" class="btn-primary">
+    Poruči odmah
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <p class="cta-trust">🛡 Sigurna kupovina · 📦 Brza isporuka · ❤ 1000+ zadovoljnih kupaca</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">
+        <svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+        Poklon iz srca
+      </div>
+      <p class="footer-tagline">Pokloni koji se pamte — napravljeni sa ljubavlju, isporučeni sa srcem.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigacija</h4>
+      <a href="#kako-funkcionise">Kako naručiti</a>
+      <a href="#proizvodi">Proizvodi</a>
+      <a href="#recenzije">Recenzije</a>
+      <a href="#faq">FAQ</a>
+      <a href="#naruci">Naruči odmah</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <p>📞 +381 64 176 8447</p>
+      <p>📧 poklonizsrca@gmail.com</p>
+      <p>📍 Beograd, Srbija</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pratite nas</h4>
+      <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" rel="noopener" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+      <a href="viber://chat?number=381641768447" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M11.4 0C5.5 0 1 4.3 1 9.6c0 2.8 1.3 5.4 3.5 7.2v3.7l3.4-1.9c1.1.3 2.3.5 3.5.5 5.9 0 10.4-4.3 10.4-9.6S17.3 0 11.4 0z"/></svg>
+        Viber
+      </a>
+      <a href="https://wa.me/381641768447" target="_blank" rel="noopener" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <div class="footer-instagram-follow">
+        <a href="https://www.instagram.com/poklonizsrca.rs/" target="_blank" rel="noopener" class="btn-follow">
+          ❤ Zaprati nas na Instagramu
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2024 Poklon iz srca. Sva prava zadržana.</span>
+    <span>Izrađeno sa ❤ u Srbiji</span>
+  </div>
+</footer>
+
+<script>
+  // Shape selector
+  function selectShape(btn) {
+    document.querySelectorAll('.shape-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    // Also update the form select to match shape
+    var shape = btn.getAttribute('data-shape');
+    var sel = document.getElementById('f-type');
+    if (sel) {
+      for (var i = 0; i < sel.options.length; i++) {
+        var opt = sel.options[i].value.toLowerCase();
+        if (shape === 'srcoliki' && opt.includes('srcoliki')) {
+          sel.selectedIndex = i; break;
+        } else if (shape === 'kvadratni' && opt.includes('kvadratni')) {
+          sel.selectedIndex = i; break;
+        }
+      }
+    }
+  }
+
+  // Mobile nav
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  });
+  function closeMobile() {
+    document.getElementById('mobile-nav').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobile-nav');
+    const hb = document.getElementById('hamburger');
+    if (!nav.contains(e.target) && !hb.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      const item = this.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Color swatches
+  document.querySelectorAll('.color-dot').forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      document.querySelectorAll('.color-dot').forEach(function(d) { d.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById('f-color').value = this.getAttribute('data-color');
+    });
+  });
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+  // Form submit
+  function submitOrder() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const street = document.getElementById('f-street').value.trim();
+    const city = document.getElementById('f-city').value.trim();
+    const type = document.getElementById('f-type').value;
+    const terms = document.getElementById('f-terms').checked;
+
+    if (!name) { alert('Molimo unesite ime i prezime.'); return; }
+    if (!phone) { alert('Molimo unesite broj telefona.'); return; }
+    if (!email || !email.includes('@')) { alert('Molimo unesite ispravnu email adresu.'); return; }
+    if (!street) { alert('Molimo unesite ulicu i broj.'); return; }
+    if (!city) { alert('Molimo unesite grad.'); return; }
+    if (!type) { alert('Molimo izaberite tip jastuka.'); return; }
+    if (!terms) { alert('Molimo potvrdite saglasnost za kontakt.'); return; }
+
+    const pismo = document.querySelector('input[name="pismo"]:checked').value;
+    const color = document.getElementById('f-color').value;
+    const qty = document.getElementById('f-qty').value;
+    const text = document.getElementById('f-text').value;
+    const photo = document.getElementById('f-photo').value;
+    const stickers = document.getElementById('f-stickers').checked;
+    const note = document.getElementById('f-note').value;
+    const zip = document.getElementById('f-zip').value;
+
+    const subject = encodeURIComponent('Nova narudžbina – ' + name + ' – ' + type);
+    const body = encodeURIComponent([
+      '═══════════════════════════════',
+      'NOVA NARUDŽBINA — POKLON IZ SRCA',
+      '═══════════════════════════════',
+      '',
+      'KONTAKT:',
+      'Ime i prezime: ' + name,
+      'Telefon: ' + phone,
+      'Email: ' + email,
+      '',
+      'ADRESA ZA DOSTAVU:',
+      street,
+      city + (zip ? ' ' + zip : '') + ', Srbija',
+      '',
+      'NARUDŽBINA:',
+      'Tip jastuka: ' + type,
+      'Količina: ' + qty,
+      'Tekst: ' + (text || '—'),
+      'Boja teksta: ' + color,
+      'Pismo: ' + pismo,
+      'Fotografija (link): ' + (photo || '—'),
+      'Stikeri: ' + (stickers ? 'Da (+250 RSD)' : 'Ne'),
+      '',
+      'NAPOMENA: ' + (note || '—'),
+    ].join('\n'));
+
+    window.location.href = 'mailto:poklonizsrca@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Show success
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
